@@ -1,23 +1,579 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+  <!-- Schema.org FAQ 구조화 데이터 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "치아보험의 '면책기간'과 '감액기간'은 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "면책기간은 보험 가입 후 일정 기간 동안 보장이 완전히 중단되는 기간(보통 90일)이며, 감액기간은 면책기간 이후 일정 기간 동안 보험금의 50%만 지급되는 기간(보통 1년~2년)을 말합니다. 이 기간이 지난 후에야 100% 보장을 받을 수 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "갱신형 치아보험과 비갱신형 치아보험의 '기간' 차이는 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "갱신형은 보통 5년, 10년 등 짧은 기간마다 보험료가 재산정(갱신)되며, 만기 시점까지 계속 납입해야 합니다. 비갱신형은 가입 시 정한 보장기간 동안 보험료가 변동되지 않으며, 납입기간이 보장기간보다 짧을 수 있습니다. 장기적으로 볼 때 비갱신형이 총 납입액은 적을 수 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "치아보험 가입 시 보장 기간을 어떻게 설정하는 것이 유리한가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "현재 연령과 치아 상태, 예상되는 치과 치료 계획에 따라 달라집니다. 40대 이전이라면 100세 만기 비갱신형을 선택하는 것이 장기적으로 유리할 수 있으며, 고연령이라면 보장 기간이 긴 갱신형을 선택하여 필요한 시기에 집중적으로 보장받는 전략도 고려해 볼 수 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "임플란트 보장 기간은 가입 후 바로 적용되나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "아닙니다. 임플란트나 브릿지 같은 고액 치료는 일반적으로 면책기간(90일)과 감액기간(1년~2년)이 적용됩니다. 가입 후 바로 치료를 받더라도 보장금액의 50%만 지급되거나 전혀 지급되지 않을 수 있으므로, 보장이 100% 적용되는 기간을 확인하고 치료 시점을 결정해야 합니다."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- 스타일: 부드럽고 다채로운 색, 타이틀 강조, 계층 구조 -->
+  <style>
+    :root {
+      --primary-color: #0077B6; /* Deep blue for trust */
+      --secondary-color: #00B4D8; /* Bright blue for emphasis */
+      --accent-color: #90E0EF; /* Light blue/cyan for highlights */
+      --highlight-color: #CAF0F8; /* Very light blue background */
+      --text-color: #2D3E50; /* Dark text for readability */
+      --bg-light: #F0F4F8; /* Page background */
+      --bg-white: #ffffff;
+      --btn-color: #FF6F61; /* Orange-red for CTA */
+      --btn-hover: #FF4F3B;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin:0; padding:0;
+      background-color: var(--bg-light);
+      color: var(--text-color);
+      line-height:1.7;
+    }
+    .container {
+      max-width: 1000px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+    header {
+      background-color: var(--primary-color);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--bg-white);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+      font-weight:900;
+      letter-spacing: -1px;
+    }
+    header h1 a {
+      color: var(--bg-white);
+      text-decoration: none;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+      color: var(--bg-white);
+      text-align: center;
+      padding: 90px 20px;
+    }
+    .hero h1 {
+      font-size: 3.8em;
+      margin-bottom: 20px;
+      font-weight:900;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+    .hero p {
+      font-size: 1.5em;
+      margin-bottom: 35px;
+      font-weight: 400;
+    }
+    .cta-btn {
+      background-color: var(--btn-color);
+      color: var(--bg-white);
+      padding: 18px 45px;
+      font-size:1.4em;
+      font-weight: bold;
+      border:none;
+      border-radius:50px;
+      cursor:pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .cta-btn:hover {
+      background-color: var(--btn-hover);
+      transform: translateY(-3px);
+    }
+    .compare-form-box {
+      background-color: var(--bg-white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      margin-top: 40px;
+    }
+    .compare-form-box h2 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 25px;
+      font-size:2.2em;
+      font-weight: 700;
+    }
+    .compare-form-box label {
+      display: block;
+      margin-bottom:8px;
+      font-weight:500;
+      color: var(--text-color);
+    }
+    .compare-form-box input, select {
+      width:100%;
+      padding:14px;
+      margin-bottom:20px;
+      border:1px solid #ddd;
+      border-radius:8px;
+      box-sizing:border-box;
+      font-size: 1.1em;
+    }
+    .compare-form-box select {
+        appearance: none;
+        background-color: #f8f8f8;
+    }
+
+    .content-section {
+      margin-top: 40px;
+      background-color: var(--bg-white);
+      padding: 60px 0;
+      border-radius:10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .content-section h2 {
+      font-size: 2.8em;
+      color: var(--secondary-color);
+      margin-bottom:30px;
+      font-weight:700;
+      text-align:center;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 10px;
+    }
+    .content-section h3 {
+      font-size:1.8em;
+      color: var(--primary-color);
+      margin-top:40px;
+      margin-bottom:15px;
+      font-weight: 700;
+    }
+    .content-section p {
+        font-size: 1.1em;
+        margin-bottom: 20px;
+    }
+    .feature-grid {
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top:30px;
+    }
+    .feature-grid .item {
+      width: calc(33.33% - 20px);
+      margin:10px 0;
+      padding:20px;
+      background-color: var(--highlight-color);
+      border-radius:12px;
+      text-align:center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-grid .item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .feature-grid .item img {
+      width:80px; height:80px;
+      margin-bottom:15px;
+    }
+    .keyword-list {
+      list-style:none;
+      padding:0;
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top:30px;
+    }
+    .keyword-list li {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+      padding:10px 20px;
+      margin:5px;
+      border-radius:20px;
+      font-weight:500;
+      font-size: 0.95em;
+      transition: background-color 0.3s;
+    }
+    .keyword-list li:hover {
+        background-color: var(--primary-color);
+    }
+    .faq-item {
+      border-bottom:1px solid #ddd;
+      padding:20px 0;
+    }
+    .faq-item h3 {
+      cursor:pointer;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      font-size:1.6em;
+      color: var(--primary-color);
+      margin:0;
+    }
+    .faq-item h3::after {
+      content: '+';
+      font-size:1.5em;
+      color: var(--secondary-color);
+      transition: transform 0.3s;
+    }
+    .faq-item.active h3::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+    .faq-item p {
+      display: none;
+      padding-top:15px;
+      color:#555;
+      font-size:1.1em;
+      line-height: 1.8;
+    }
+    .faq-item.active p {
+      display: block;
+    }
+    footer {
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+      text-align:center;
+      padding: 40px 20px;
+      font-size:0.9em;
+    }
+    footer a {
+      color: var(--bg-white);
+      text-decoration:none;
+      margin:0 10px;
+    }
+    footer a:hover {
+      text-decoration:underline;
+    }
+    /* 테이블 스타일 */
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .styled-table th, .styled-table td {
+      border: 1px solid #ddd;
+      padding: 15px;
+      text-align: center;
+      font-size: 1.05em;
+    }
+    .styled-table th {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+      font-weight: 700;
+    }
+    .styled-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    /* 그래프 대체 박스 스타일 */
+    .graph-placeholder {
+        background-color: var(--highlight-color);
+        border: 1px solid var(--accent-color);
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 30px;
+        text-align: center;
+        font-size: 1.1em;
+        color: var(--primary-color);
+        font-weight: 500;
+    }
+
+    @media (max-width:768px) {
+      .hero h1 { font-size:2.8em; }
+      .hero p { font-size:1.3em; }
+      .cta-btn { padding:15px 30px; font-size:1.1em; }
+      .compare-form-box { padding:25px; }
+      .content-section h2 { font-size:2.4em; }
+      .feature-grid .item { width:100%; margin:10px 0; }
+      .keyword-list li { margin:3px; font-size:0.9em; }
+      .faq-item h3 { font-size: 1.4em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><a href="/">치아보험기간 비교 센터</a></h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>나에게 맞는 치아보험 기간은?</h1>
+        <p>2026년 최신 데이터 기반, 복잡한 치아보험 기간(갱신/면책/감액)을 완벽하게 분석하고<br>나에게 맞는 최적의 플랜을 찾아드립니다.</p>
+        <div class="compare-form-box">
+          <h2>맞춤형 치아보험 무료 견적 비교 요청</h2>
+          <p>간단한 정보 입력으로 여러 보험사의 견적과 기간별 장단점을 한 번에 비교해 보세요.</p>
+          <form action="#" method="post">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+            <label for="phone">연락처</label>
+            <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호를 입력하세요" required>
+            <label for="age">나이</label>
+            <input type="number" id="age" name="age" placeholder="만 나이를 입력하세요 (예: 35)" required>
+            <label for="desired-coverage">희망 보장 내역 (선택)</label>
+            <select id="desired-coverage" name="desired-coverage">
+                <option value="all">전체 보장 (임플란트, 크라운 등)</option>
+                <option value="implant">임플란트 보장 강화</option>
+                <option value="crown">크라운 및 충치 보장 강화</option>
+                <option value="basic">기본 충치 치료만 희망</option>
+            </select>
+            <button type="submit" class="cta-btn">맞춤 견적 요청하기</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>치아보험 기간, 왜 중요할까요?</h2>
+        <p>치아보험은 일반적인 의료실비와 달리 ‘기간’이라는 개념이 매우 복잡하게 얽혀 있습니다. 가입자가 보험료를 납입하는 기간(납입기간), 보험사가 보장을 해주는 기간(보장기간), 그리고 보험금 지급을 유예하거나 감액하는 기간(면책/감액기간)이 모두 다르게 적용될 수 있습니다.</p>
+        <p>특히 고액 치료비가 발생하는 임플란트, 크라운 등은 가입 즉시 보장받을 수 없고, 일정 기간이 지나야 보장 혜택을 온전히 누릴 수 있습니다. 따라서 가입 시점에 이러한 기간을 정확하게 이해하는 것이 향후 예상되는 치료 계획에 맞춰 보험을 효율적으로 활용하는 핵심입니다.</p>
+
+        <h3 style="margin-top:50px;">함께 많이 찾는 키워드</h3>
+        <ul class="keyword-list">
+          <li>#치아보험기간</li>
+          <li>#치아보험가격비교</li>
+          <li>#치아보험만기환급형</li>
+          <li>#치아보험면책기간</li>
+          <li>#치아보험갱신형단점</li>
+          <li>#치아보험비갱신형추천</li>
+          <li>#치아보험임플란트보장</li>
+          <li>#치아보험가입순위</li>
+          <li>#치과보험견적</li>
+          <li>#어린이치아보험</li>
+          <li>#치아보험40대</li>
+          <li>#치아보험50대</li>
+          <li>#치아보험저렴한곳</li>
+          <li>#치아보험내돈내산후기</li>
+          <li>#치아보험장단점</li>
+          <li>#치아보험보장범위</li>
+          <li>#치아보험감액기간</li>
+          <li>#치아보험비용절약팁</li>
+          <li>#치아보험추천상품</li>
+          <li>#치아보험평균가격</li>
+          <li>#치아보험순수보장형</li>
+          <li>#치아보험가입조건</li>
+          <li>#치아보험만기</li>
+          <li>#치아보험갱신주기</li>
+          <li>#치과치료비용예상</li>
+          <li>#치아보험비교사이트</li>
+          <li>#치아보험견적금액</li>
+          <li>#임플란트보험기간</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>치아보험 기간의 핵심: 갱신형 vs 비갱신형</h2>
+        <p>치아보험 가입 시 가장 중요한 결정 요소는 갱신형과 비갱신형 중 어떤 것을 선택할 것인가입니다. 이는 보험료 납입 기간과 총 비용에 직접적인 영향을 미칩니다.</p>
+
+        <h3>1. 갱신형 치아보험의 특징</h3>
+        <p>갱신형은 일반적으로 5년, 10년 등 짧은 주기로 보험료가 재산정(갱신)됩니다. 가입 초기의 보험료는 비갱신형보다 저렴하지만, 연령이 증가하거나 물가 상승률에 따라 갱신 시점마다 보험료가 인상될 수 있습니다. 갱신형은 보장 기간이 길더라도 납입 기간이 보장 기간과 동일하여 만기 시점까지 계속 납입해야 한다는 특징이 있습니다.</p>
+        <p><strong>장점:</strong> 가입 초기 보험료 저렴, 단기간 보장 계획에 적합, 보장 내용 변경 용이<br><strong>단점:</strong> 갱신 시 보험료 인상 부담, 총 납입 금액이 높아질 가능성, 장기적인 재정 계획에 불리</p>
+
+        <h3>2. 비갱신형 치아보험의 특징</h3>
+        <p>비갱신형은 가입 시 정한 보장 기간 동안 보험료가 변동되지 않습니다. 납입 기간(예: 20년 납)이 보장 기간(예: 80세 만기)보다 짧을 수 있습니다. 총 납입액은 갱신형보다 저렴한 경우가 많지만, 초기 보험료는 갱신형보다 높습니다.</p>
+        <p><strong>장점:</strong> 총 납입액이 저렴할 가능성 높음, 장기적인 보험료 예측 가능, 보험료 인상 걱정 없음<br><strong>단점:</strong> 초기 보험료 부담, 중도 해지 시 환급금 적음, 짧은 기간만 가입하고 싶을 때 비효율적</p>
+
+        <h3 style="margin-top:50px;">갱신형 vs 비갱신형 비교표 (2026년 기준)</h3>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>구분</th>
+                    <th>갱신형</th>
+                    <th>비갱신형</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>보험료 변동</td>
+                    <td>주기적으로 인상 가능</td>
+                    <td>가입 시점 확정, 변동 없음</td>
+                </tr>
+                <tr>
+                    <td>초기 보험료</td>
+                    <td>저렴함</td>
+                    <td>비교적 높음</td>
+                </tr>
+                <tr>
+                    <td>납입 기간</td>
+                    <td>보장 만기 시점까지 계속 납입</td>
+                    <td>일정 기간 납입 후 보장만 유지 (예: 20년 납 80세 만기)</td>
+                </tr>
+                <tr>
+                    <td>총 납입 금액 예상</td>
+                    <td>장기간 유지 시 높을 수 있음</td>
+                    <td>장기간 유지 시 낮을 수 있음</td>
+                </tr>
+                <tr>
+                    <td>적합한 연령</td>
+                    <td>고연령층, 단기 보장 희망자</td>
+                    <td>20~40대, 장기 보장 희망자</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>치아보험 가입 시 필수 확인 사항: 면책기간과 감액기간</h2>
+        <p>치아보험은 일반 건강보험과 달리 가입 후 바로 100% 보장되지 않습니다. 보험사기나 도덕적 해이를 막기 위해 '면책기간'과 '감액기간'이라는 제도를 운영하고 있습니다. 이 두 기간은 치아보험의 '기간' 개념 중 가장 중요합니다.</p>
+
+        <h3>1. 면책기간 (보장 개시일)</h3>
+        <p>면책기간은 보험 가입 후 일정 기간 동안 치과 치료를 받더라도 보험금을 전혀 지급받을 수 없는 기간입니다. 일반적으로 90일로 설정되는 경우가 많으며, 보험사별로 차이가 있을 수 있습니다. 예를 들어, 2026년 1월 1일에 가입했다면 3월 31일까지는 면책기간이 적용되어 4월 1일부터 보장이 시작됩니다. 이 기간 동안 충치 치료나 잇몸 질환 치료를 받더라도 보장 혜택은 받을 수 없습니다.</p>
+
+        <h3>2. 감액기간 (보장금액 축소 기간)</h3>
+        <p>감액기간은 면책기간이 끝난 후 일정 기간 동안 보험금의 50%만 지급하는 기간입니다. 면책기간과 마찬가지로 임플란트, 크라운, 브릿지 등 고액의 보철 치료에 주로 적용됩니다. 감액기간은 보통 1년 또는 2년으로 설정됩니다. 예를 들어, 감액기간이 1년인 경우 가입 후 1년 3개월이 지나서 임플란트 치료를 받으면 보장금액의 50%만 지급받을 수 있습니다.</p>
+
+        <h3>3. 치료 시점별 보장 금액 예시 (면책기간 90일, 감액기간 1년 기준)</h3>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>경과 기간</th>
+                    <th>치과 치료 (임플란트)</th>
+                    <th>보험금 지급률</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>가입 후 80일</td>
+                    <td>치료 (면책기간 중)</td>
+                    <td>0% 지급 (보장 없음)</td>
+                </tr>
+                <tr>
+                    <td>가입 후 10개월</td>
+                    <td>치료 (감액기간 중)</td>
+                    <td>50% 지급</td>
+                </tr>
+                <tr>
+                    <td>가입 후 1년 3개월</td>
+                    <td>치료 (감액기간 종료 후)</td>
+                    <td>100% 지급</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="text-align: center; font-style: italic; margin-top: 15px;">※ 정확한 면책/감액기간은 상품 약관에 따라 다를 수 있으므로 반드시 확인해야 합니다.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>치아보험 기간 설정, 나에게 맞는 선택 가이드</h2>
+        <p>치아보험의 보장 기간은 개인의 연령, 치아 상태, 경제 상황에 따라 달라져야 합니다. 무조건 100세 만기를 선택하거나 무조건 짧은 갱신형을 선택하는 것이 정답은 아닙니다. 2026년 현재 시장 상황을 바탕으로 세 가지 유형별 추천 전략을 제안합니다.</p>
+
+        <h3>1. 20~30대: 장기적인 관점의 비갱신형 추천</h3>
+        <p>20~30대는 치아 상태가 비교적 양호하고 보험료가 저렴한 시기입니다. 이 시기에 비갱신형으로 80세 또는 100세 만기를 설정하면, 평생 동안 저렴한 보험료로 치아 보장을 받을 수 있습니다. 특히 납입 기간을 20년으로 설정하면, 40~50대에 납입을 끝내고 고령까지 보험 혜택만 누리는 '납입 완료형' 가입이 가능해집니다. 치아보험의 장점을 가장 크게 누릴 수 있는 연령대입니다.</p>
+
+        <h3>2. 40~50대: 집중 보장 혹은 만기 환급형 고려</h3>
+        <p>40~50대는 치아 노화가 시작되는 시점으로, 당장 임플란트나 크라운 치료가 필요할 가능성이 높아집니다. 이 경우, 비갱신형의 초기 보험료가 다소 부담될 수 있습니다. 갱신형 상품으로 가입하여 향후 10~20년 정도만 집중적으로 보장을 받는 것도 현실적인 대안입니다. 또한, '만기 환급형'을 선택하여 납입한 보험료 일부를 만기 시점에 돌려받는 방식으로 비용 부담을 줄이는 방법도 있습니다.</p>
+
+        <h3>3. 60대 이상: 갱신형 혹은 짧은 기간 집중 보장</h3>
+        <p>60대 이상은 치과 치료 수요가 매우 높습니다. 이 경우 비갱신형 가입은 초기 보험료가 상당히 높을 수 있습니다. 대신 갱신형을 통해 필요한 기간 동안만 보장받거나, 보장 기간이 긴 갱신형을 선택하여 인상되는 보험료를 감수하는 전략을 고려해야 합니다. 치과 치료 계획이 있다면 가입 후 면책/감액기간을 지나 즉시 치료를 받는 것을 목표로 해야 합니다.</p>
+
+        <h3 style="margin-top:50px;">치아보험 가입 팁 요약</h3>
+        <ul>
+            <li><strong>면책/감액기간 확인:</strong> 가입 후 바로 보장되지 않으므로, 치료 시기를 고려하여 가입 시점을 정해야 합니다.</li>
+            <li><strong>보장 금액 비교:</strong> 임플란트, 크라운 보장 금액이 높은 상품을 우선적으로 비교합니다. (보통 연간 3개 한도)</li>
+            <li><strong>치과 치료력 고지:</strong> 과거 5년 이내 치과 치료력이 있다면 반드시 고지해야 합니다. 고지 의무 위반 시 보험금 지급 거절 사유가 될 수 있습니다.</li>
+            <li><strong>비교 견적 필수:</strong> 여러 보험사의 상품을 비교하여 최저가 견적을 받는 것이 중요합니다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>자주 묻는 질문 (FAQ)</h2>
+
+        <div class="faq-item">
+          <h3>Q1. 치아보험 가입 후 언제부터 보장받을 수 있나요? (면책기간)</h3>
+          <p>A. 상품마다 차이가 있지만, 일반적으로 보존치료(충치, 아말감 등)는 가입 후 90일이 지나면 보장이 시작되고, 보철치료(임플란트, 크라운 등)는 90일의 면책기간과 1~2년의 감액기간을 거쳐야 100% 보장됩니다. 면책기간 중에는 보험금 지급이 불가합니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q2. 갱신형 치아보험을 오래 유지하면 총 보험료가 비싸지나요?</h3>
+          <p>A. 네, 갱신형은 만기가 될 때까지 보험료를 납입하며, 나이가 들수록 보험료가 인상됩니다. 통계적으로 고연령층은 치과 치료 수요가 높기 때문에 갱신 시점에 보험료가 크게 오를 수 있습니다. 장기간 유지할 경우 비갱신형보다 총 납입액이 높을 수 있습니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q3. 임플란트를 이미 한 치아도 치아보험으로 보장받을 수 있나요?</h3>
+          <p>A. 이미 치료(임플란트, 크라운 등)를 받은 치아는 해당 부위의 재치료에 대해서는 보장이 되지 않습니다. 하지만 보험 가입 전에 치료를 받은 치아라도, 새로운 치아에 문제가 생겨 치료를 받는 경우라면 보장받을 수 있습니다. 고지 사항을 정확히 확인해야 합니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q4. 치아보험 견적 비교 시 평균 가격을 어떻게 알 수 있나요?</h3>
+          <p>A. 치아보험의 평균 가격은 가입자의 연령, 성별, 희망하는 보장 금액, 갱신형 여부에 따라 천차만별입니다. 30대 남성 기준 2~3만 원대, 40대 여성 기준 3~5만 원대가 평균적인 예상 비용입니다. 정확한 견적은 비교 사이트를 통해 여러 상품의 가격을 확인해봐야 합니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q5. 치아보험 가입 후 중도 해지하면 환급금이 있나요?</h3>
+          <p>A. 순수보장형 상품의 경우 해지환급금이 없거나 매우 적습니다. 만기환급형의 경우 중도 해지 시 납입 원금보다 적은 금액이 환급될 수 있습니다. 비갱신형은 초기에 해지하면 환급금이 적고, 장기간 납입 후 해지하면 환급률이 높아지지만, 갱신형은 납입 기간 전체에 걸쳐 환급금이 낮은 경향이 있습니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q6. 2026년에 달라지는 치아보험 정책이 있나요?</h3>
+          <p>A. 2026년에는 금융당국의 보험료율 산출 가이드라인 변화에 따라 치아보험의 보험료 산정이 다소 보수적으로 변동될 수 있습니다. 또한, 고령층의 치과 치료 수요 증가로 일부 상품의 갱신 보험료가 더 민감하게 반응할 수 있습니다. 최신 정보를 바탕으로 비교하는 것이 중요합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>신뢰할 수 있는 외부 자료 및 참고 링크</h2>
+        <ul>
+          <li><a href="https://www.fss.or.kr/fss/main/index.do" target="_blank" rel="noopener">금융감독원 (FSS) - 금융소비자 정보포털 파인</a></li>
+          <li><a href="https://www.consumer.go.kr/kca/index.do" target="_blank" rel="noopener">한국소비자원 - 소비자 정보</a></li>
+          <li><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9%EC%A0%95%EB%B3%B4/%EC%83%81%ED%95%B4%EC%9D%B4%EB%B3%B4%ED%97%98%EB%B2%95" target="_blank" rel="noopener">상법 제4장 보험편 - 보험 관련 법규 (국가법령정보센터)</a></li>
+          <li><a href="https://ko.wikipedia.org/wiki/%EC%B9%98%EC%95%84%EB%B3%B4%ED%97%98" target="_blank" rel="noopener">치아보험 - 위키백과</a></li>
+          <li><a href="https://www.nhis.or.kr/nhis/index.do" target="_blank" rel="noopener">국민건강보험공단 (NHIS) - 치과 치료 급여 기준</a></li>
+        </ul>
+        <p>위 자료들은 치아보험 가입 시 법적 기준, 약관, 소비자 보호 기준 및 건강보험 적용 여부 등을 확인하는 데 유용한 정보입니다.</p>
+      </div>
+    </section>
+
+  </main>
+
+
+  <script>
+    // FAQ 토글 기능
+    document.querySelectorAll('.faq-item h3').forEach(item => {
+      item.addEventListener('click', event => {
+        const parent = item.parentElement;
+        parent.classList.toggle('active');
+      });
+    });
+  </script>
+
+  
